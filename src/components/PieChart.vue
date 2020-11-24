@@ -108,6 +108,8 @@ export default {
       });
       render(data);
     });
+    console.log("App loaded")
+    this.fetchData()
   },
   updated() {
     console.log("Updated chart");
