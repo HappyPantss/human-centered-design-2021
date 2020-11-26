@@ -1,59 +1,54 @@
 <template>
-  <div id="barchartdiv"></div>
+  <h2>Welke steden hebben de meeste P+R locaties na Rotterdam?</h2>
+  <p>
+    <strong>Klik op de staaf</strong> van een stad om te zien hoe het aantal
+    parkeerplaatsen van de P+R locaties binnen die stad is verdeeld.
+  </p>
+  <svg width="960" height="500"></svg>
+  <!-- <div id="testchartdiv"></div> -->
 </template>
 
 <script>
 import * as d3 from "d3";
 
-// Vue export logic
 export default {
-  name: "Chart",
-  emits: ["cityname"],
-  props: {
-    width: {
-      type: Number,
-      required: true,
-    },
-  },
+  name: "TestChart",
   mounted() {
-    console.log("App loaded");
     this.makeBarChart();
   },
+  components: {},
   methods: {
-    makeBarChart() {
-		const lessData = this.barData.filter(d => d.prLocations > 2 && d.prLocations < 15).sort((b, a) => a.prLocations - b.prLocations);
-      const margin = { top: 10, right: 30, bottom: 170, left: 80 };
-      const innerWidth = this.width - margin.left - margin.right;
-      const innerHeight = this.height - margin.top - margin.bottom;
+    makeBarChart(data) {
+      const svg = d3.select("svg");
 
-      const svg = d3
-        .select("#linechart")
-        .append("svg")
-        .attr("width", this.width)
-        .attr("height", this.height)
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+      const width = +svg.attr("width");
+      const height = +svg.attr("height");
 
-      const title = "How many Park & ​​Ride places have been made per year?";
+      const xValue = data;
+      const xAxisLabel = "Time";
 
-      const xValue = (d) => d.areaid;
-      const xAxisLabel = "areaid";
+      const yValue = data.value;
+      const yAxisLabel = "areaid";
 
-      const yValue = (d) => d.usageid;
-      const yAxisLabel = "usageid";
-      // set the dimensions and margins of the graph
+      const margin = { top: 60, right: 40, bottom: 88, left: 105 };
+      const innerWidth = width - margin.left - margin.right;
+      const innerHeight = height - margin.top - margin.bottom;
 
       const xScale = d3
-        .scaleTime()
-        .domain(d3.extent(lessData, xValue))
+        .scaleLinear()
+        .domain(d3.extent(data, xValue))
         .range([0, innerWidth])
         .nice();
 
       const yScale = d3
         .scaleLinear()
-        .domain(d3.extent(lessData, yValue))
+        .domain(d3.extent(data, yValue))
         .range([innerHeight, 0])
         .nice();
+
+      const g = svg
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
       const xAxis = d3
         .axisBottom(xScale)
@@ -62,7 +57,7 @@ export default {
 
       const yAxis = d3.axisLeft(yScale).tickSize(-innerWidth).tickPadding(10);
 
-      const yAxisG = svg.append("g").call(yAxis);
+      const yAxisG = g.append("g").call(yAxis);
       yAxisG.selectAll(".domain").remove();
 
       yAxisG
@@ -75,7 +70,7 @@ export default {
         .attr("text-anchor", "middle")
         .text(yAxisLabel);
 
-      const xAxisG = svg
+      const xAxisG = g
         .append("g")
         .call(xAxis)
         .attr("transform", `translate(0,${innerHeight})`);
@@ -94,13 +89,22 @@ export default {
         .line()
         .x((d) => xScale(xValue(d)))
         .y((d) => yScale(yValue(d)))
-        .curve(d3.curveBasis);
+        .curve((d) => d3.curveBasis(d));
 
-      svg.append("path")
+      g.append("path")
         .attr("class", "line-path")
-        .attr("d", lineGenerator(lessData));
+        .attr("d", lineGenerator(data));
 
-      svg.append("text").attr("class", "title").attr("y", -10).text(title);
+      //   d3.json(
+      //     "https://opendata.rdw.nl/resource/6wzd-evwu.json"
+      //   ).then((data) => {
+      //     data.forEach((d) => {
+      //       d.areaid = +d.areaid;
+      //       d.startdataarea = +d.startdataarea;
+      //     });
+      //     render(data);
+      //   });
+      console.log(data);
     },
   },
 };

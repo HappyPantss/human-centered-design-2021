@@ -1,117 +1,117 @@
 <template>
-	<div id="chart-wrapper">
-		<svg id="d3-chart"></svg>
+    <h2>Welke steden hebben de meeste P+R locaties na Rotterdam?</h2>
+    <div id="barchartdiv">
 	</div>
 </template>
 
 <script>
-	import * as d3 from 'd3';
-	// Vue export logic
-	export default {
-		name: "Chart",
-		props: ['chartData'],
-		data() {
-			return {
-				svgElement: Object,
-				x: Function,
-				y: Function,
-				width: Number,
-				height: Number
-			}
-		},
-		mounted() {
-			let data = this.chartData;
-			this.svgElement = d3.select("#d3-chart")
-			// set the dimensions and margins of the graph
-			const margin = {
-					top: 20,
-					right: 20,
-					bottom: 30,
-					left: 40
-				},
-				width = 960 - margin.left - margin.right,
-				height = 500 - margin.top - margin.bottom;
-			// set the ranges
-			const x = d3.scaleBand()
-				.range([0, width])
-				.padding(0.1);
-			const y = d3.scaleLinear()
-				.range([height, 0]);
-			// append the svg object to the body of the page
-			// append a 'group' element to 'svg'
-			// moves the 'group' element to the top left margin
-			const svg = d3.select("#d3-chart")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-				.attr("transform",
-					"translate(" + margin.left + "," + margin.top + ")");
-			// format the data
-			data.forEach(function(d) {
-				d.sales = +d.sales;
-			});
-			// Scale the range of the data in the domains
-			x.domain(data.map(function(d) {
-				return d.name;
-			}));
-			y.domain([0, d3.max(data, function(d) {
-				return d.sales;
-			})]);
-			// append the rectangles for the bar chart
-			svg.selectAll(".bar")
-				.data(data)
-				.enter().append("rect")
-				.attr("class", "bar")
-				.attr("x", function(d) {
-					return x(d.name);
-				})
-				.attr("width", x.bandwidth())
-				.attr("y", function(d) {
-					return y(d.sales);
-				})
-				.attr("height", function(d) {
-					return height - y(d.sales);
-				});
-			// add the x Axis
-			svg.append("g")
-				.attr("transform", "translate(0," + height + ")")
-				.call(d3.axisBottom(x));
-			// add the y Axis
-			svg.append("g")
-				.call(d3.axisLeft(y));
-			this.svgElement = svg;
-			this.x = x;
-			this.y = y;
-			this.width = width;
-			this.height = height;
-		},
-		updated() {
-			console.log('Updated chart');
-			console.log(this.chartData);
-			console.log(this.svgElement);
-			// Create the u variable
-			let u = this.svgElement.selectAll("rect")
-				.data(this.chartData)
-			u
-				.enter()
-				.append("rect") // Add a new rect for each new elements
-				.merge(u) // get the already existing elements as well
-				.transition() // and apply changes to all of them
-				.duration(1000)
-				.attr("x", (d) => { return this.x(d.name); })
-				.attr("y", (d) => { return this.y(d.sales); })
-				.attr("width", this.x.bandwidth())
-				.attr("height", (d) => {
-					return this.height - this.y(d.sales);
-				})
-			// If less group in the new dataset, I delete the ones not in use anymore
-			u
-				.exit()
-				.remove()
-		},
-		computed() {
-			console.log('Computed chart');
-			console.log(this)
-		}
-	};
+console.log("Hallo van BarChart");
+import * as d3 from "d3"
+export default {
+    name: "BarChart",
+    emits: ["cityname"],
+    props: {
+        width: {
+            type: Number,
+            required: true
+        },
+        height: {
+            type: Number,
+            required: true
+        },
+        barData: {
+            type: Array,
+            required: true
+        }
+    },
+    mounted() {
+        this.makeBarChart();
+    },
+    methods: {
+        makeBarChart() {
+            const lessData = this.barData.filter(d => d.prLocations > 2 && d.prLocations < 15).sort((b, a) => a.prLocations - b.prLocations);
+            const margin = {top: 10, right: 30, bottom: 170, left: 80};
+            const innerWidth = this.width - margin.left - margin.right;
+            const innerHeight = this.height - margin.top - margin.bottom;
+
+            // Append the svg object to the body of the page
+            const svg = d3.select("#barchartdiv")
+            .append("svg")
+                .attr("width", this.width)
+                .attr("height", this.height)
+                .attr('class', 'barchart')
+            .append("g")
+                .attr("transform", `translate(${margin.left}, ${innerHeight/2/2})`);
+
+            // X-axis with scaleBand() used for catigorical elements (here: city names)
+            const x = d3.scaleBand()
+            .domain(lessData.map(d =>  d.city))
+            .range([0, innerWidth])
+            .padding(0.2);
+
+            // Add label to X-axis 'City's with P+R'
+            svg.append("g")
+            .call(d3.axisBottom(x))
+            .attr("transform", `translate(0, ${innerHeight})`)
+            .append('text')
+            .attr('class', 'axis-label')
+            .attr('y', 100)
+            .attr('x', innerWidth/2)
+            .text('Steden met P+R');
+
+            // Rotate the city names (tick text)
+            svg.selectAll(".tick text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+
+            // Y-axis with scaleLinear(). 
+            // Domain starts at 0 and ends at the maximum data value of P+R locations. 
+            const y = d3.scaleLinear()
+            .domain([0, d3.max(lessData, d => d.prLocations)])
+            .range([innerHeight, 0]);
+
+            // Add label to Y-axis with the text "Number of P+R locations"
+            svg.append("g")
+            .call(d3.axisLeft(y))
+            .append('text')
+            .attr('class', 'axis-label')
+            .attr('y', -40)
+            .attr('x', -innerHeight/2+15)
+            .attr("transform", `rotate(-90)`)
+            .text('Aantal P+R locaties >');
+            
+            // Create the bars based on the cityData
+            // Give it a class with the name of the city (used for generating pie chart later)
+            // Add onclick to invoke the updatePie function to generate or update the pie chart
+            svg.selectAll("rect")
+            .data(lessData)
+            .enter()
+            .append("rect")
+            .attr("x", d => x(d.city))
+            .attr("y", d => y(d.prLocations))
+            .attr("width", x.bandwidth())
+            .attr("height", d => innerHeight - y(d.prLocations))
+            .attr("fill", "#1873cc")
+            .attr("class", d => d.city)
+            .on("mouseover", function() {d3.select(this).style("cursor", "pointer");})
+            .on("click", this.storeCity);
+        },
+        storeCity(id) {
+            const city = id.target.className.baseVal;
+            this.$emit('cityname', city);
+        }
+    }
+};
 </script>
+
+<style scoped>
+    h2 {
+        font-size: 1.5em;
+        margin: 0 0 0 0;
+        color: #325F98;
+    }
+    p {
+        margin: 0.1em 0 0 0;
+        color: #797979;
+    }
+</style>
