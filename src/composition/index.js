@@ -1,7 +1,7 @@
 import {
     dataSource,
     selectedColumn,
-} from './config.js';
+} from '../config.js';
 
 async function getData(url) {
     const response = await fetch(url);

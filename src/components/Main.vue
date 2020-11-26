@@ -1,33 +1,34 @@
 <template>
-<!-- I have used the project of @lars-ruijs to see how he managed to transfer the data in the visualisation -->
+  <!-- I have used the project of @lars-ruijs to see how he managed to transfer the data in the visualisation -->
   <h1>Hoi</h1>
-  <TestChart
-    v-if="specificationData.length > 0"
-    :testData="specificationData"
-    :width="900"
-    :height="420"
-  />
+  <button v-on:click="updateData">Click me!</button>
+  <br />
+  <TestChart :chartData="chartData" />
 </template>
 
 <script>
-import * as RDWData from "../helpers/getData";
 import TestChart from "./TestChart";
-console.log("Hallo boven export van Main");
+import getData from "../helpers/getData";
+
 export default {
   name: "Main",
   components: { TestChart },
+  props: ["data"],
   data() {
     return {
-      specificationData: [],
+      chartData: getData(),
     };
   },
   mounted() {
-    this.fetchData();
+    console.log("Mounted main");
+  },
+  updated() {
+    console.log("Updated main");
   },
   methods: {
-    async fetchData() {
-      const specData = await RDWData.getData();
-      this.specificationData = specData;
+    updateData: async function () {
+      this.chartData = getData();
+      await this.$nextTick();
     },
   },
 };
@@ -35,22 +36,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-g text.axis-label {
-  font-size: 1.5em;
-  fill: grey;
+body {
+  margin: 0px;
+  overflow: hidden;
 }
 </style>

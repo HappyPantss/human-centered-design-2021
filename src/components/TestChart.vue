@@ -1,121 +1,142 @@
 <template>
-  <h2>Welke steden hebben de meeste P+R locaties na Rotterdam?</h2>
-  <p>
-    <strong>Klik op de staaf</strong> van een stad om te zien hoe het aantal
-    parkeerplaatsen van de P+R locaties binnen die stad is verdeeld.
-  </p>
   <svg width="960" height="500"></svg>
-  <!-- <div id="testchartdiv"></div> -->
 </template>
 
 <script>
 import * as d3 from "d3";
-
+// Vue export logic
 export default {
-  name: "TestChart",
-  mounted() {
-    this.makeBarChart();
+  name: "PieChart",
+  props: ["chartData"],
+  data() {
+    return {
+      svgElement: Object,
+      x: Function,
+      y: Function,
+      width: Number,
+      height: Number,
+    };
   },
-  components: {},
-  methods: {
-    makeBarChart(data) {
-      const svg = d3.select("svg");
+  mounted() {
+    let data = this.chartData;
+    // let data = this.chartData;
+    const svg = d3.select("svg");
 
-      const width = +svg.attr("width");
-      const height = +svg.attr("height");
+    const title = "A Week in San Francisco";
 
-      const xValue = data;
-      const xAxisLabel = "Time";
+    // format the data
+    data.forEach(function (d) {
+      d.temperature = +d.temperature;
+      d.timestamp = new Date(d.timestamp);
+    });
 
-      const yValue = data.value;
-      const yAxisLabel = "areaid";
+    const xValue = function (d) {
+      return d.timestamp;
+    };
+    const xAxisLabel = "Time";
 
-      const margin = { top: 60, right: 40, bottom: 88, left: 105 };
-      const innerWidth = width - margin.left - margin.right;
-      const innerHeight = height - margin.top - margin.bottom;
+    const yValue = function (d) {
+      return d.temperature;
+    };
+    const yAxisLabel = "Temperature";
+    // set the dimensions and margins of the graph
+    const margin = {
+        top: 20,
+        right: 20,
+        bottom: 30,
+        left: 40,
+      },
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+    // set the ranges
+    const xScale = d3
+      .scaleTime()
+      .domain(d3.extent(data, xValue))
+      .range([0, width])
+      .nice();
 
-      const xScale = d3
-        .scaleLinear()
-        .domain(d3.extent(data, xValue))
-        .range([0, innerWidth])
-        .nice();
+    const yScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data, yValue))
+      .range([height, 0])
+      .nice();
 
-      const yScale = d3
-        .scaleLinear()
-        .domain(d3.extent(data, yValue))
-        .range([innerHeight, 0])
-        .nice();
+    const g = svg
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
-      const g = svg
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+    const xAxis = d3.axisBottom(xScale).tickSize(-height).tickPadding(15);
 
-      const xAxis = d3
-        .axisBottom(xScale)
-        .tickSize(-innerHeight)
-        .tickPadding(15);
+    const yAxis = d3.axisLeft(yScale).tickSize(-width).tickPadding(10);
 
-      const yAxis = d3.axisLeft(yScale).tickSize(-innerWidth).tickPadding(10);
+    const yAxisG = g.append("g").call(yAxis);
+    yAxisG.selectAll(".domain").remove();
 
-      const yAxisG = g.append("g").call(yAxis);
-      yAxisG.selectAll(".domain").remove();
+    yAxisG
+      .append("text")
+      .attr("class", "axis-label")
+      .attr("y", -60)
+      .attr("x", -height / 2)
+      .attr("fill", "black")
+      .attr("transform", `rotate(-90)`)
+      .attr("text-anchor", "middle")
+      .text(yAxisLabel);
 
-      yAxisG
-        .append("text")
-        .attr("class", "axis-label")
-        .attr("y", -60)
-        .attr("x", -innerHeight / 2)
-        .attr("fill", "black")
-        .attr("transform", `rotate(-90)`)
-        .attr("text-anchor", "middle")
-        .text(yAxisLabel);
+    const xAxisG = g
+      .append("g")
+      .call(xAxis)
+      .attr("transform", `translate(0,${height})`);
 
-      const xAxisG = g
-        .append("g")
-        .call(xAxis)
-        .attr("transform", `translate(0,${innerHeight})`);
+    xAxisG.select(".domain").remove();
 
-      xAxisG.select(".domain").remove();
+    xAxisG
+      .append("text")
+      .attr("class", "axis-label")
+      .attr("y", 80)
+      .attr("x", width / 2)
+      .attr("fill", "black")
+      .text(xAxisLabel);
 
-      xAxisG
-        .append("text")
-        .attr("class", "axis-label")
-        .attr("y", 80)
-        .attr("x", innerWidth / 2)
-        .attr("fill", "black")
-        .text(xAxisLabel);
+    const lineGenerator = d3
+      .line()
+      .x((d) => xScale(xValue(d)))
+      .y((d) => yScale(yValue(d)))
+      .curve(d3.curveBasis);
 
-      const lineGenerator = d3
-        .line()
-        .x((d) => xScale(xValue(d)))
-        .y((d) => yScale(yValue(d)))
-        .curve((d) => d3.curveBasis(d));
+    g.append("path").attr("class", "line-path").attr("d", lineGenerator(data));
 
-      g.append("path")
-        .attr("class", "line-path")
-        .attr("d", lineGenerator(data));
-
-      //   d3.json(
-      //     "https://opendata.rdw.nl/resource/6wzd-evwu.json"
-      //   ).then((data) => {
-      //     data.forEach((d) => {
-      //       d.areaid = +d.areaid;
-      //       d.startdataarea = +d.startdataarea;
-      //     });
-      //     render(data);
-      //   });
-      console.log(data);
-    },
+    g.append("text").attr("class", "title").attr("y", -10).text(title);
+    console.log("App loaded");
+  },
+  // updated() {
+	// 		console.log('Updated chart');
+	// 		console.log(this.chartData);
+	// 		console.log(this.svgElement);
+	// 		// Create the u variable
+	// 		let u = this.svgElement.selectAll("rect")
+	// 			.data(this.chartData)
+	// 		u
+	// 			.enter()
+	// 			.append("path") // Add a new rect for each new elements
+	// 			.merge(u) // get the already existing elements as well
+	// 			.transition() // and apply changes to all of them
+	// 			.duration(1000)
+	// 			.attr("x", (d) => { return this.x(d.timestamp); })
+	// 			.attr("y", (d) => { return this.y(d.temperature); })
+	// 			.attr("width", this.x.bandwidth())
+	// 		// If less group in the new dataset, I delete the ones not in use anymore
+	// 		u
+	// 			.exit()
+	// 			.remove()
+	// 	},
+  computed() {
+    console.log("Computed chart");
+    console.log(this);
   },
 };
 </script>
 
 <style>
-body {
-  margin: 0px;
-  overflow: hidden;
-}
-
 circle {
   fill: steelblue;
 }
