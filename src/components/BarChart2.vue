@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     makeBarChart() {
-      let data = this.mostData.filter(d => d.value > 2 );
+      let data = this.mostData.filter((d) => d.value > 2);
       this.svgElement = d3.select("#d3-chart");
 
       // set the dimensions and margins of the graph
@@ -87,6 +87,12 @@ export default {
         })
         .attr("height", function (d) {
           return height - y(d.value);
+        })
+        .on("mouseover", function () {
+          d3.select(this).attr("opacity", "0.7");
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("opacity", "1");
         });
 
       // add the x Axis
@@ -104,8 +110,7 @@ export default {
       this.height = height;
     },
   },
-  updated() {
-  },
+  updated() {},
   computed() {
     console.log("Computed chart");
     console.log(this);
@@ -116,5 +121,17 @@ export default {
 <style>
 rect.bar {
   fill: #0048a8;
+}
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 70px;
+  height: 38px;
+  padding: 5px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }
 </style>
