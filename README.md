@@ -1,7 +1,7 @@
-# functional-programming
+# frontend-applications
 ![RDW Bar Chart](https://i.imgur.com/Dt94WP1.png)
 
-This is the repository for frontend-data CMD 2020/2021.
+This is the repository for frontend-applications CMD 2020/2021.
 
 Code example from: https://github.com/roberrrt-s<br>
 Live version: https://cmd-fa-ser.netlify.app/
@@ -48,7 +48,7 @@ The array that will come out of this will look something like this:<br>
 
 # Installation
 **Clone the repository:**<br>
-`https://github.com/HappyPantss/functional-programming.git`
+`https://github.com/HappyPantss/frontend-applications.git`
 
 **Install NPM:**<br>
 `npm install`
