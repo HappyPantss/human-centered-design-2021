@@ -1,6 +1,6 @@
 <template>
   <div id="chart-wrapper">
-    <svg id="d3-chart"></svg>
+    <svg id="d3-chart2"></svg>
   </div>
 </template>
 
@@ -8,8 +8,8 @@
 import * as d3 from "d3";
 // Vue export logic
 export default {
-  names: "BarChart",
-  props: ["chartData"],
+  names: "BarChart2",
+  props: ["mostData"],
   data() {
     return {
       svgElement: Object,
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     makeBarChart() {
-      let data = this.chartData;
+      let data = this.mostData.filter(d => d.value > 2 );
       this.svgElement = d3.select("#d3-chart");
 
       // set the dimensions and margins of the graph
@@ -46,7 +46,7 @@ export default {
       // append a 'group' element to 'svg'
       // moves the 'group' element to the top left margin
       const svg = d3
-        .select("#d3-chart")
+        .select("#d3-chart2")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -60,7 +60,7 @@ export default {
       // Scale the range of the data in the domains
       x.domain(
         data.map(function (d) {
-          return d.startdataarea;
+          return d.areadesc;
         })
       );
 
@@ -79,7 +79,7 @@ export default {
         .append("rect")
         .attr("class", "bar")
         .attr("x", function (d) {
-          return x(d.startdataarea);
+          return x(d.areadesc);
         })
         .attr("width", x.bandwidth())
         .attr("y", function (d) {
@@ -105,7 +105,6 @@ export default {
     },
   },
   updated() {
-   
   },
   computed() {
     console.log("Computed chart");
