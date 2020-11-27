@@ -20,31 +20,8 @@ I want to know why Park and Ride spaces are developed, why **you** should use th
 
 For more information, click [here](https://github.com/HappyPantss/frontend-applications/wiki).
 
-## API
-To get the data I want, I use the API from RDW called `https://opendata.rdw.nl/resource/6wzd-evwu.json`
-
-The data I want to use, is the startdataarea, because this tells me when the Park & Ride location is build. In the code below I count all the years and set them in a seperate array.<br>
-```javascript
-// Thanks to @Razpudding / Laurens
-  let aantalPerJaarArray = [];
-  locationArray.forEach((jaar) => {
-    // if the array includes a empty value, change it to 0
-    // else make a new array with all the years + number of values
-    if (aantalPerJaarArray.find((item) => item.year == jaar) == undefined) {
-      aantalPerJaarArray.push({
-        year: jaar,
-        value: 0,
-      });
-    }
-    // Count for every found item 1 to the value
-    aantalPerJaarArray.find((item) => item.year == jaar).value += 1;
-  });
-  
-	makePieChart(aantalPerJaarArray);
-```
-
-The array that will come out of this will look something like this:<br>
-![Data array](https://i.imgur.com/zIDsMzu.png)
+# Datasets
+The datasets that I use is [GEO PenR](https://opendata.rdw.nl/Parkeren/GEO-PenR/6wzd-evwu). I count all the values and add them together and I use the startdataarea.
 
 # Installation
 **Clone the repository:**<br>
