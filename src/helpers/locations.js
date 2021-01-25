@@ -7,15 +7,15 @@ export default [{
         "value": 100,
     },
     {
-        "location": "Amsterdam",
-        "value": 30,
+        "location": "Den Haag",
+        "value": 50,
     },
     {
-        "location": "Amsterdam",
-        "value": 30,
+        "location": "Krommenie",
+        "value": 80,
     },
     {
-        "location": "Amsterdam",
-        "value": 30,
+        "location": "Heiloo",
+        "value": 20,
     }
 ]
