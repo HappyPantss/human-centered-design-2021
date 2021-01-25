@@ -1,6 +1,12 @@
 <template>
   <div id="chart-wrapper">
     <svg id="d3-chart"></svg>
+    <div id="option">
+        <input name="updateButton" 
+              type="button" 
+              value="Update" 
+              onclick="updateData()" />
+    </div>
   </div>
 </template>
 
@@ -9,7 +15,7 @@ import * as d3 from "d3";
 // Vue export logic
 export default {
   names: "BarChart",
-  props: ["chartData"],
+  props: ["chartData", "dataprop"],
   data() {
     return {
       svgElement: Object,
@@ -60,7 +66,7 @@ export default {
       // Scale the range of the data in the domains
       x.domain(
         data.map(function (d) {
-          return d.startdataarea;
+          return d[this.dataprop];
         })
       );
 
@@ -109,6 +115,10 @@ export default {
       this.width = width;
       this.height = height;
     },
+
+    updateData() {
+      console.log("UPDATE")
+    }
   },
   updated() {},
   computed() {
