@@ -1,10 +1,18 @@
 <template>
   <div id="chart-wrapper">
     <svg id="d3-chart"></svg>
-      <input name="updateButton" 
-            type="button" 
-            value="Update" 
-            @click="updateData" />
+    <input
+      name="updateLocations"
+      type="button"
+      value="Locations"
+      @click="updateData"
+    />
+    <input
+      name="updateYears"
+      type="button"
+      value="Years"
+      @click="makeBarChart"
+    />
   </div>
 </template>
 
@@ -17,21 +25,21 @@ import locationsData from "../helpers/locations";
 export default {
   names: "BarChart",
   props: {
-     data:{
-        type: Array,
-        required: true
-     }
+    data: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {
-      dataprop: "startdataarea",
+      dataprop: "info",
       svgElement: Object,
       x: Function,
       y: Function,
       width: Number,
       height: Number,
       yearsData: yearsData,
-      locationsData: locationsData
+      locationsData: locationsData,
     };
   },
   mounted() {
@@ -39,56 +47,48 @@ export default {
   },
   methods: {
     makeBarChart() {
-      console.log(this.dataprop)
+      console.log(this.dataprop);
+      this.dataprop = "info";
       let data = this.yearsData;
-      this.svgElement = d3.select("#d3-chart");
-      // set the dimensions and margins of the graph
-      const margin = {
-          top: 10,
-          right: 20,
-          bottom: 30,
-          left: 40,
-        }
-      this.width = 930 - margin.left - margin.right,
-      this.height = 500 - margin.top - margin.bottom;
-
-      // set the ranges
-      this.x = d3.scaleBand().range([0, this.width]).padding(0.1);
-
-      this.y = d3.scaleLinear().range([this.height, 0]);
-
-      // append the svg object to the body of the page
-      // append a 'group' element to 'svg'
-      // moves the 'group' element to the top left margin
-      const svg = d3
-        .select("#d3-chart")
-        .attr("width", this.width + margin.left + margin.right)
-        .attr("height", this.height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       // format the data
       data.forEach((d) => {
         d.value = +d.value;
       });
 
-      // Scale the range of the data in the domains
-      this.x.domain(
-        data.map((d) => {
-          return d[this.dataprop];
-        })
-      );
+      var margin = {top: 10, right: 20, bottom: 30, left: 40};
 
-      this.y.domain([
-        0,
-        d3.max(data, function (d) {
-          return d.value;
-        }),
-      ]);
+      this.width = 930 - margin.left - margin.right,
+      this.height = 500 - margin.top - margin.bottom;
+
+      this.svgElement = d3.select("#d3-chart");
+
+      const svg = d3
+        .select("#d3-chart")
+          .attr("width", this.width + margin.left + margin.right)
+          .attr("height", this.height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // set the ranges
+      this.x = d3.scaleBand()
+        .range([0, this.width])
+        .domain(data.map((d) => { return d[this.dataprop]; }))
+        .padding(0.1);
+      // add the x Axis
+      svg.append("g")
+        .attr("transform", "translate(0," + this.height + ")")
+        .call(d3.axisBottom(this.x));
+
+      this.y = d3.scaleLinear()
+        .domain([0, d3.max(data, function (d) { return d.value; })])
+        .range([this.height, 0]);
+      // add the y Axis
+      svg.append("g").call(d3.axisLeft(this.y));
+      this.svgElement = svg;
 
       // append the rectangles for the bar chart
-      svg
-        .selectAll(".bar")
+      svg.selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
@@ -102,72 +102,77 @@ export default {
         })
         .attr("height", (d) => {
           return this.height - this.y(d.value);
-        })
-        .on("mouseover", function() {
-          d3.select(this).attr("opacity", "0.7");
-        })
-        .on("mouseout", function() {
-          d3.select(this).attr("opacity", "1");
-        })
-        .on("click", () => {
-          this.updateData()
         });
-
-      // add the x Axis
-      svg
-        .append("g")
-        .attr("transform", "translate(0," + this.height + ")")
-        .call(d3.axisBottom(this.x));
-
-      // add the y Axis
-      svg.append("g").call(d3.axisLeft(this.y));
-      this.svgElement = svg;
-      // this.x = x;
-      // this.y = y;
-      // this.width = width;
-      // this.height = height;
+      // .on("mouseover", function () {
+      //   d3.select(this).attr("opacity", "0.7");
+      // })
+      // .on("mouseout", function () {
+      //   d3.select(this).attr("opacity", "1");
+      // });
+      // .on("click", () => {
+      //   this.updateData();
+      // });
     },
 
     updateData() {
-      this.dataprop = "location"
-      console.log("UPDATE")
-      console.log(this.dataprop)
+      this.dataprop = "info";
+      console.log("UPDATE");
 
-    let data = this.locationsData;  
+      let data = this.locationsData;
+
+      console.log(this.dataprop);
 
       // format the data
       data.forEach((d) => {
         d.value = +d.value;
       });
 
-      // Scale the range of the data in the domains
-      this.x.domain(
-        data.map((d) => {
-          return d[this.dataprop];
-        })
-      );
+       var margin = {top: 10, right: 20, bottom: 30, left: 40};
 
-      this.y.domain([
-        0,
-        d3.max(data, function (d) {
-          return d.value;
-        }),
-      ]);
-      
-    d3.selectAll(".bar")
-            .data(data)
-            .transition().duration(1000)
-            .attr("x", (d) => {
-              return this.x(d.location);
-            })
-            .attr("width", this.x.bandwidth())
-            .attr("y", (d) => {
-              return this.y(d.value);
-            })
-            .attr("height", (d) => {
-              return this.height - this.y(d.value);
-            })
-    }
+      this.width = 930 - margin.left - margin.right,
+      this.height = 500 - margin.top - margin.bottom;
+
+      this.svgElement = d3.select("#d3-chart");
+
+      const svg = d3
+        .select("#d3-chart")
+          .attr("width", this.width + margin.left + margin.right)
+          .attr("height", this.height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // set the ranges
+      this.x = d3.scaleBand()
+        .range([0, this.width])
+        .domain(data.map((d) => { return d[this.dataprop]; }))
+        .padding(0.1);
+      // add the x Axis
+      svg.append("g")
+        .attr("transform", "translate(0," + this.height + ")")
+        .call(d3.axisBottom(this.x));
+
+      this.y = d3.scaleLinear()
+        .domain([0, d3.max(data, function (d) { return d.value; })])
+        .range([this.height, 0]);
+      // add the y Axis
+      svg.append("g").call(d3.axisLeft(this.y));
+      this.svgElement = svg;
+
+      d3.selectAll("rect")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .attr("x", (d) => {
+          return this.x(d.info);
+        })
+        .attr("width", this.x.bandwidth())
+        .attr("y", (d) => {
+          return this.y(d.value);
+        })
+        .attr("height", (d) => {
+          return this.height - this.y(d.value);
+        });
+    },
   },
   updated() {},
   computed() {

@@ -1,21 +1,21 @@
 export default [{
-        "location": "Amsterdam",
-        "value": 30,
-    },
-    {
-        "location": "Rotterdam",
+        "info": "2013",
         "value": 100,
     },
     {
-        "location": "Den Haag",
-        "value": 50,
+        "info": "2014",
+        "value": 34
     },
     {
-        "location": "Krommenie",
-        "value": 80,
+        "info": "2015",
+        "value": 123,
     },
     {
-        "location": "Heiloo",
-        "value": 20,
+        "info": "2018",
+        "value": 5
+    },
+    {
+        "info": "2019",
+        "value": 200
     }
 ]

@@ -1,21 +1,21 @@
 export default [{
-        "startdataarea": 2013,
+        "info": "2013",
         "value": 30,
     },
     {
-        "startdataarea": 2014,
+        "info": "2014",
         "value": 48
     },
     {
-        "startdataarea": 2015,
+        "info": "2015",
         "value": 180,
     },
     {
-        "startdataarea": 2018,
+        "info": "2018",
         "value": 1
     },
     {
-        "startdataarea": 2019,
+        "info": "2019",
         "value": 2
     }
 ]
