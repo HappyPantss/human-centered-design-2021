@@ -11,7 +11,6 @@
       overstappen op het openbaar vervoer of carpool-reizen.
    </p>
    <br />
-   <h2>Hoeveel Park & Ride plekken zijn er per jaar gemaakt?</h2>
    <BarChart />
    <h2>Over de jaren heen:</h2>
    <p>
