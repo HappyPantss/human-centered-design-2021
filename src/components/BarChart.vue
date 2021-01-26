@@ -88,7 +88,7 @@ export default {
       this.svgElement = svg;
 
       // append the rectangles for the bar chart
-      svg.selectAll("rect")
+      svg.selectAll(".bar")
         .data(data)
         .enter()
         .append("rect")
@@ -102,32 +102,23 @@ export default {
         })
         .attr("height", (d) => {
           return this.height - this.y(d.value);
-        });
+        })
       // .on("mouseover", function () {
       //   d3.select(this).attr("opacity", "0.7");
       // })
       // .on("mouseout", function () {
       //   d3.select(this).attr("opacity", "1");
       // });
-      // .on("click", () => {
-      //   this.updateData();
-      // });
+      .on("click", () => {
+        this.updateData();
+      });
     },
 
     updateData() {
       this.dataprop = "info";
-      console.log("UPDATE");
-
       let data = this.locationsData;
 
-      console.log(this.dataprop);
-
-      // format the data
-      data.forEach((d) => {
-        d.value = +d.value;
-      });
-
-       var margin = {top: 10, right: 20, bottom: 30, left: 40};
+     var margin = {top: 10, right: 20, bottom: 30, left: 40};
 
       this.width = 930 - margin.left - margin.right,
       this.height = 500 - margin.top - margin.bottom;
@@ -141,21 +132,11 @@ export default {
         .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      // set the ranges
-      this.x = d3.scaleBand()
-        .range([0, this.width])
-        .domain(data.map((d) => { return d[this.dataprop]; }))
-        .padding(0.1);
-      // add the x Axis
-      svg.append("g")
-        .attr("transform", "translate(0," + this.height + ")")
-        .call(d3.axisBottom(this.x));
-
-      this.y = d3.scaleLinear()
-        .domain([0, d3.max(data, function (d) { return d.value; })])
-        .range([this.height, 0]);
+      this.y.domain([0, d3.max(data, function (d) { return d.value; })]);
       // add the y Axis
-      svg.append("g").call(d3.axisLeft(this.y));
+      svg
+        .transition()
+        .duration(1000).call(d3.axisLeft(this.y));
       this.svgElement = svg;
 
       d3.selectAll("rect")
@@ -174,7 +155,9 @@ export default {
         });
     },
   },
-  updated() {},
+  updated() {
+    
+  },
   computed() {
     console.log("Computed chart");
     console.log(this);
