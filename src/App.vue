@@ -26,12 +26,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: black;
-  max-width: 60rem;
-  height: 58rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0e518d;
-  border-radius: 2.5%;
 }
 </style>
