@@ -88,6 +88,10 @@
       </ul>
       </p>
   </div>
+  <div class="stage">
+      <h2>Gemaakt door: <span>Sergio Eijben</span></h2><br>
+      <p>CMD Student - 2020/ 2021 - Tech Track Information Design</p>
+  </div>
 </template>
 
 <script>
