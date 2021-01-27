@@ -283,6 +283,7 @@ rect.bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
 
 input {
@@ -311,12 +312,21 @@ input:active {
 }
 
 span {
-  color: white;
+  color: #3b86e7;
 }
 
 .tick text {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 0.8rem;
+  color: white;
+}
+
+.tick line {
+  stroke: white;
+}
+
+.domain {
+  stroke: white
 }
 </style>

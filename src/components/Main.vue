@@ -12,7 +12,7 @@
     </div>
   <div class="stage">
     <!-- I have used the project of @lars-ruijs to see how he managed to transfer the data in the visualisation -->
-      <h2>Wat is Park and Ride?</h2>
+      <h2>Wat is <span>Park and Ride</span>?</h2>
       <br />
       <p>
         Een Park and Ride facilities (oftewel: Parkeer en Reis-voorziening),
@@ -27,7 +27,7 @@
       <BarChart />
   </div>
   <div class="stage">
-      <h2>Over de jaren heen:</h2>
+      <h2>Over de <span>jaren</span> heen:</h2><br>
       <p class="information">
         Parkeerders op herkomst-P+R-terreinen leveren relatief veel bespaarde
         autokilometers en spitsmijdingen op. Op dit soort P+R-terreinen
@@ -148,12 +148,13 @@ h1.title {
 .stage h2 {
   font-family: "Roboto", sans-serif;
   font-size: 4rem;
-  color: #3b86e7;
+  color: white;
 }
 
 .stage p {
   font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
+  color: #d8d8d8;
 }
 
 .information {
