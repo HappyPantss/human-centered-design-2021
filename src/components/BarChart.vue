@@ -148,20 +148,29 @@ export default {
         })
         .append("title")
         .text((i) => {
-          return (
-            xValue(i) + ": " + yValue(i) + " voorzieningen."
-          );
-        })
-        .on("mouseover", function () {
-          d3.select(this).attr("opacity", "0.7");
-          var coordinates = d3.pointer(this);
-          var xCo = coordinates[0];
-          var yCo = coordinates[1];
-          console.log(xCo, yCo);
-        })
-        .on("mouseout", function () {
-          d3.select(this).attr("opacity", "1");
+          return xValue(i) + ": " + yValue(i) + " voorzieningen.";
         });
+
+      svg
+        .selectAll(".labelText")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("class", "labelText")
+        .text(function (d) {
+          return d.value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return i * (860 / data.length) + (500 / data.length - 1);
+        })
+        .attr("y", (d) => {
+          return this.y(d.value) - 10;
+        })
+        .attr("font-family", "'Roboto', sans-serif")
+        .attr("font-size", "0.8rem")
+        .attr("font-weiht", "400")
+        .attr("fill", "white");
     },
 
     updateData2014() {
@@ -182,6 +191,26 @@ export default {
         .attr("height", (d) => {
           return this.height - this.y(d.value);
         });
+
+      d3
+        .selectAll(".labelText")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .text(function (d) {
+          return d.value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return i * (860 / data.length) + (500 / data.length - 1);
+        })
+        .attr("y", (d) => {
+          return this.y(d.value) - 10;
+        })
+        .attr("font-family", "'Roboto', sans-serif")
+        .attr("font-size", "0.8rem")
+        .attr("font-weiht", "400")
+        .attr("fill", "white");
     },
 
     updateData2015() {
@@ -202,6 +231,26 @@ export default {
         .attr("height", (d) => {
           return this.height - this.y(d.value);
         });
+
+      d3
+        .selectAll(".labelText")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .text(function (d) {
+          return d.value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return i * (860 / data.length) + (500 / data.length - 1);
+        })
+        .attr("y", (d) => {
+          return this.y(d.value) - 10;
+        })
+        .attr("font-family", "'Roboto', sans-serif")
+        .attr("font-size", "0.8rem")
+        .attr("font-weiht", "400")
+        .attr("fill", "white");
     },
 
     updateData2018() {
@@ -222,6 +271,26 @@ export default {
         .attr("height", (d) => {
           return this.height - this.y(d.value);
         });
+
+      d3
+        .selectAll(".labelText")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .text(function (d) {
+          return d.value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return i * (860 / data.length) + (500 / data.length - 1);
+        })
+        .attr("y", (d) => {
+          return this.y(d.value) - 10;
+        })
+        .attr("font-family", "'Roboto', sans-serif")
+        .attr("font-size", "0.8rem")
+        .attr("font-weiht", "400")
+        .attr("fill", "white");
     },
 
     updateData2019() {
@@ -242,6 +311,26 @@ export default {
         .attr("height", (d) => {
           return this.height - this.y(d.value);
         });
+
+      d3
+        .selectAll(".labelText")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .text(function (d) {
+          return d.value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return i * (860 / data.length) + (500 / data.length - 1);
+        })
+        .attr("y", (d) => {
+          return this.y(d.value) - 10;
+        })
+        .attr("font-family", "'Roboto', sans-serif")
+        .attr("font-size", "0.8rem")
+        .attr("font-weiht", "400")
+        .attr("fill", "white");
     },
 
     updateData2013() {
@@ -262,6 +351,26 @@ export default {
         .attr("height", (d) => {
           return this.height - this.y(d.value);
         });
+
+      d3
+        .selectAll(".labelText")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .text(function (d) {
+          return d.value;
+        })
+        .attr("text-anchor", "middle")
+        .attr("x", function (d, i) {
+          return i * (860 / data.length) + (500 / data.length - 1);
+        })
+        .attr("y", (d) => {
+          return this.y(d.value) - 10;
+        })
+        .attr("font-family", "'Roboto', sans-serif")
+        .attr("font-size", "0.8rem")
+        .attr("font-weiht", "400")
+        .attr("fill", "white");
     },
   },
   updated() {},
@@ -297,7 +406,6 @@ input {
   border: 2px solid #3b86e7;
   border-radius: 0.6rem;
   outline: none;
-  cursor: pointer;
 }
 
 input:hover {
@@ -328,6 +436,6 @@ span {
 }
 
 .domain {
-  stroke: white
+  stroke: white;
 }
 </style>
