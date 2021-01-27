@@ -276,7 +276,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 rect.bar {
-  fill: #1dbbd8;
+  fill: white;
 }
 
 .buttonYear {
@@ -294,25 +294,25 @@ input {
   font-weight: 700;
   font-size: 1rem;
   color: black;
-  border: 2px solid #1dbbd8;
+  border: 2px solid white;
   border-radius: 0.6rem;
   outline: none;
 }
 
 input:hover {
-  background-color: #1dbbd8;
+  background-color: black;
   color: white;
   border: none;
-  border: 2px solid #1dbbd8;
+  border: 2px solid black;
   border-radius: 0.6rem;
 }
 
 input:active {
-  background-color: #95dbe7;
+  background-color: rgb(44, 44, 44);
 }
 
 span {
-  color: #1dbbd8;
+  color: white;
 }
 
 .tick text {
