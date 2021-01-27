@@ -1,5 +1,5 @@
 # frontend-applications
-![RDW Bar Chart](https://i.imgur.com/HBbdoV6.mp4)
+![RDW Bar Chart](https://imgur.com/DrefNQI.gif)
 
 This is the repository for frontend-applications CMD 2020/2021.
 
