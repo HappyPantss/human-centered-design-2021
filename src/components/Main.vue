@@ -118,13 +118,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0e518d;
+  background: linear-gradient(to  right top, #052e52, #0e518d);
 }
 
 .spacer {
   width: 100%;
   height: 100vh;
-  background: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,7 +132,6 @@ body {
 .stage {
   width: 50%;
   height: 100vh;
-  background-color: #0e518d;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -163,10 +161,11 @@ body {
   align-self: flex-end;
   margin-bottom: -8px;
   margin-left: 20px;
+  color: white;
 }
 
 .logo {
-  background-color: #0e518d;
+  background-color: white;
   height: 15rem;
   width: 15rem;
 }
@@ -183,7 +182,7 @@ a:hover {
 h1.title {
   font-family: "Roboto", sans-serif;
   text-align: center;
-  color: #0e518d;
+  color: white;
   font-size: 25rem;
   margin-top: 10rem;
   margin-left: -4.5rem;
