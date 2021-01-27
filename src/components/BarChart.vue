@@ -297,6 +297,7 @@ input {
   border: 2px solid #3b86e7;
   border-radius: 0.6rem;
   outline: none;
+  cursor: pointer;
 }
 
 input:hover {
