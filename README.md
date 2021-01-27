@@ -8,11 +8,11 @@ Live version: https://cmd-fa-ser.netlify.app/
 The assignment was not successful at first, so I had to retake it. In this repository you can find the old and new functions from the first and last concept. 
 I had to retake Frontend Data as well, so you can find all the criteria that was needed for both assignments.
 
-You can find the old information about Frontend Applications [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
-You can find the new information about Frontend Applications [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
+You can find the **old** information about **Frontend Applications** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
+You can find the **new** information about **Frontend Applications** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
 
-You can find the old information about Frontend Data [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
-You can find the new information about Frontend Data [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
+You can find the **old** information about **Frontend Data** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
+You can find the **new** information about **Frontend Data** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
 
 # Debrief
 In this course we will make a data visualization for the 'De Volkskrant' newspaper. We got some data to explore. The data is about parking and cars. I have to choose a topic which I think would make a great visualization. These datasets were given by RDW and are opensource. The RDW is a organization that takes care of the registration of motorized vehicles and driving licenses in the Netherlands.
