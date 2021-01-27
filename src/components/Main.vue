@@ -148,6 +148,7 @@ h1.title {
 .stage h2 {
   font-family: "Roboto", sans-serif;
   font-size: 4rem;
+  color: #3b86e7;
 }
 
 .stage p {

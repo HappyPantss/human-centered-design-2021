@@ -276,7 +276,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 rect.bar {
-  fill: white;
+  fill: #3b86e7;
 }
 
 .buttonYear {
@@ -293,22 +293,21 @@ input {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: black;
-  border: 2px solid white;
+  border: 2px solid #3b86e7;
   border-radius: 0.6rem;
   outline: none;
 }
 
 input:hover {
-  background-color: black;
+  background-color: #3b86e7;
   color: white;
   border: none;
-  border: 2px solid black;
+  border: 2px solid #3b86e7;
   border-radius: 0.6rem;
 }
 
 input:active {
-  background-color: rgb(44, 44, 44);
+  background-color: #9dc2f3;
 }
 
 span {
