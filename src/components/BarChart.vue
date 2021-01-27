@@ -1,37 +1,43 @@
 <template>
-  <h2>Hoeveel Park & Ride plekken zijn er in 2013 gemaakt?</h2>
+  <h2>
+    Hoeveel Park & Ride plekken zijn er in <span>{{ year }}</span> gemaakt?
+  </h2>
+  <br />
   <div id="chart-wrapper">
     <svg id="d3-chart"></svg><br />
-    <input
-      name="updateLocations"
-      type="button"
-      value="2013"
-      @click="updateData2013"
-    />
-    <input
-      name="updateLocations"
-      type="button"
-      value="2014"
-      @click="updateData2014"
-    />
-    <input
-      name="updateLocations"
-      type="button"
-      value="2015"
-      @click="updateData2015"
-    />
-    <input
-      name="updateLocations"
-      type="button"
-      value="2018"
-      @click="updateData2018"
-    />
-    <input
-      name="updateLocations"
-      type="button"
-      value="2019"
-      @click="updateData2019"
-    />
+    <div class="buttonYear">
+      <p>Verander van jaar:</p>
+      <input
+        name="updateLocations"
+        type="button"
+        value="2013"
+        @click="updateData2013"
+      />
+      <input
+        name="updateLocations"
+        type="button"
+        value="2014"
+        @click="updateData2014"
+      />
+      <input
+        name="updateLocations"
+        type="button"
+        value="2015"
+        @click="updateData2015"
+      />
+      <input
+        name="updateLocations"
+        type="button"
+        value="2018"
+        @click="updateData2018"
+      />
+      <input
+        name="updateLocations"
+        type="button"
+        value="2019"
+        @click="updateData2019"
+      />
+    </div>
   </div>
 </template>
 
@@ -54,7 +60,7 @@ export default {
   },
   data() {
     return {
-      dataprop: "info",
+      year: "2013",
       svgElement: Object,
       x: Function,
       y: Function,
@@ -72,8 +78,7 @@ export default {
   },
   methods: {
     makeBarChart() {
-      console.log(this.dataprop);
-      this.dataprop = "info";
+      this.year = "2013";
       let data = this.year2013;
 
       // format the data
@@ -82,10 +87,12 @@ export default {
       });
 
       const xValue = (d) => d.info;
+      const yValue = (d) => d.value;
 
-      this.margin = { top: 10, right: 20, bottom: 30, left: 40 };
+      this.margin = { top: 10, right: 0, bottom: 30, left: 25 };
+      this.padding = { x: 50, y: 20 };
 
-      (this.width = 930 - this.margin.left - this.margin.right),
+      (this.width = 895 - this.margin.left - this.margin.right),
         (this.height = 500 - this.margin.top - this.margin.bottom);
 
       this.svgElement = d3.select("#d3-chart");
@@ -116,12 +123,7 @@ export default {
         .attr("transform", "translate(0," + this.height + ")")
         .call(d3.axisBottom(this.x));
 
-      this.y = d3
-        .scaleLinear()
-        .domain([
-          0, 60
-        ])
-        .range([this.height, 0]);
+      this.y = d3.scaleLinear().domain([0, 60]).range([this.height, 0]);
 
       // add the y Axis
       this.yAxisG = svg.append("g").call(d3.axisLeft(this.y));
@@ -135,7 +137,7 @@ export default {
         .append("rect")
         .attr("class", "bar")
         .attr("x", (d) => {
-          return this.x(d[this.dataprop]);
+          return this.x(d.info);
         })
         .attr("width", this.x.bandwidth())
         .attr("y", (d) => {
@@ -144,19 +146,26 @@ export default {
         .attr("height", (d) => {
           return this.height - this.y(d.value);
         })
-        // .on("mouseover", function () {
-        //   d3.select(this).attr("opacity", "0.7");
-        // })
-        // .on("mouseout", function () {
-        //   d3.select(this).attr("opacity", "1");
-        // });
-        .on("click", () => {
-          this.updateData2015();
+        .append("title")
+        .text((i) => {
+          return (
+            xValue(i) + ": " + yValue(i) + " voorzieningen."
+          );
+        })
+        .on("mouseover", function () {
+          d3.select(this).attr("opacity", "0.7");
+          var coordinates = d3.pointer(this);
+          var xCo = coordinates[0];
+          var yCo = coordinates[1];
+          console.log(xCo, yCo);
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("opacity", "1");
         });
     },
 
     updateData2014() {
-      this.dataprop = "info";
+      this.year = "2014";
       let data = this.year2014;
 
       d3.selectAll("rect")
@@ -176,7 +185,7 @@ export default {
     },
 
     updateData2015() {
-      this.dataprop = "info";
+      this.year = "2015";
       let data = this.year2015;
 
       d3.selectAll("rect")
@@ -196,7 +205,7 @@ export default {
     },
 
     updateData2018() {
-      this.dataprop = "info";
+      this.year = "2018";
       let data = this.year2018;
 
       d3.selectAll("rect")
@@ -216,7 +225,7 @@ export default {
     },
 
     updateData2019() {
-      this.dataprop = "info";
+      this.year = "2019";
       let data = this.year2019;
 
       d3.selectAll("rect")
@@ -236,7 +245,7 @@ export default {
     },
 
     updateData2013() {
-      this.dataprop = "info";
+      this.year = "2013";
       let data = this.year2013;
 
       d3.selectAll("rect")
@@ -264,19 +273,51 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 rect.bar {
   fill: #0048a8;
 }
-div.tooltip {
-  position: absolute;
+
+.buttonYear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  background-color: white;
+  width: 5rem;
+  height: 2rem;
   text-align: center;
-  width: 70px;
-  height: 38px;
-  padding: 5px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0048a8;
+  border: 2px solid #0048a8;
+  border-radius: 0.6rem;
+  outline: none;
+}
+
+input:hover {
+  background-color: #0048a8;
+  color: white;
+  border: none;
+  border: 2px solid #0048a8;
+  border-radius: 0.6rem;
+}
+
+input:active {
+  background-color: #3b86e7;
+}
+
+span {
+  color: #0048a8;
+}
+
+.tick text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 </style>
