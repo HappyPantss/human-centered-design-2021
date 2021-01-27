@@ -1,10 +1,7 @@
 <template>
   <div class="spacer">
-    <div class="corner">
-      <div class="logo"></div>
-      <h1>Parkeren (met RDW data)</h1>
-    </div>
     <h1 class="title">P + R</h1>
+    <h1>Parkeren (met RDW data)</h1>
   </div>
 
     <div class="wrap">
@@ -127,6 +124,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .stage {
@@ -147,27 +145,19 @@ body {
   left: 0;
 }
 
-.corner {
-  top: 0;
-  left: 0;
-  position: absolute;
-  display: flex;
-}
-
-.corner h1 {
+h1 {
   font-family: "Roboto", sans-serif;
-  text-align: center;
   font-size: 2rem;
-  align-self: flex-end;
-  margin-bottom: -8px;
-  margin-left: 20px;
   color: white;
 }
 
-.logo {
-  background-color: white;
-  height: 15rem;
-  width: 15rem;
+h1.title {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 25rem;
+  margin-top: -10rem;
+  margin-left: -4.5rem;
 }
 
 a {
@@ -177,15 +167,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-h1.title {
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-  color: white;
-  font-size: 25rem;
-  margin-top: 10rem;
-  margin-left: -4.5rem;
 }
 
 .stage h2 {
