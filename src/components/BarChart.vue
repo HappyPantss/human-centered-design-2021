@@ -11,6 +11,7 @@
         name="updateLocations"
         type="button"
         value="2013"
+        
         @click="updateData2013"
       />
       <input
@@ -157,11 +158,15 @@ export default {
         .enter()
         .append("text")
         .attr("class", "labelText")
-        .text(function (d) {
-          return d.value;
+        .text((d) => {
+          if (d.value != 0) {
+            return d.value;
+          } else {
+            return null
+          }
         })
         .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
+        .attr("x", (d, i) => {
           return i * (860 / data.length) + (500 / data.length - 1);
         })
         .attr("y", (d) => {
@@ -197,11 +202,15 @@ export default {
         .data(data)
         .transition()
         .duration(1000)
-        .text(function (d) {
-          return d.value;
+        .text((d) => {
+          if (d.value != 0) {
+            return d.value;
+          } else {
+            return null
+          }
         })
         .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
+        .attr("x", (d, i) => {
           return i * (860 / data.length) + (500 / data.length - 1);
         })
         .attr("y", (d) => {
@@ -237,11 +246,15 @@ export default {
         .data(data)
         .transition()
         .duration(1000)
-        .text(function (d) {
-          return d.value;
+        .text((d) => {
+          if (d.value != 0) {
+            return d.value;
+          } else {
+            return null
+          }
         })
         .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
+        .attr("x", (d, i) => {
           return i * (860 / data.length) + (500 / data.length - 1);
         })
         .attr("y", (d) => {
@@ -277,11 +290,15 @@ export default {
         .data(data)
         .transition()
         .duration(1000)
-        .text(function (d) {
-          return d.value;
+        .text((d) => {
+          if (d.value != 0) {
+            return d.value;
+          } else {
+            return null
+          }
         })
         .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
+        .attr("x", (d, i) => {
           return i * (860 / data.length) + (500 / data.length - 1);
         })
         .attr("y", (d) => {
@@ -317,11 +334,15 @@ export default {
         .data(data)
         .transition()
         .duration(1000)
-        .text(function (d) {
-          return d.value;
+        .text((d) => {
+          if (d.value != 0) {
+            return d.value;
+          } else {
+            return null
+          }
         })
         .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
+        .attr("x", (d, i) => {
           return i * (860 / data.length) + (500 / data.length - 1);
         })
         .attr("y", (d) => {
@@ -357,11 +378,15 @@ export default {
         .data(data)
         .transition()
         .duration(1000)
-        .text(function (d) {
-          return d.value;
+        .text((d) => {
+          if (d.value != 0) {
+            return d.value;
+          } else {
+            return null
+          }
         })
         .attr("text-anchor", "middle")
-        .attr("x", function (d, i) {
+        .attr("x", (d, i) => {
           return i * (860 / data.length) + (500 / data.length - 1);
         })
         .attr("y", (d) => {
