@@ -8,32 +8,26 @@
     <div class="buttonYear">
       <p>Verander van jaar:</p>
       <input
-        name="updateLocations"
         type="button"
         value="2013"
-        
         @click="updateData2013"
       />
       <input
-        name="updateLocations"
         type="button"
         value="2014"
         @click="updateData2014"
       />
       <input
-        name="updateLocations"
         type="button"
         value="2015"
         @click="updateData2015"
       />
       <input
-        name="updateLocations"
         type="button"
         value="2018"
         @click="updateData2018"
       />
       <input
-        name="updateLocations"
         type="button"
         value="2019"
         @click="updateData2019"
@@ -50,7 +44,6 @@ import year2015 from "../helpers/2015";
 import year2018 from "../helpers/2018";
 import year2019 from "../helpers/2019";
 
-// Vue export logic
 export default {
   names: "BarChart",
   props: {
@@ -82,22 +75,26 @@ export default {
       this.year = "2013";
       let data = this.year2013;
 
-      // format the data
+      // Format the data
       data.forEach((d) => {
         d.value = +d.value;
       });
 
+      // Assign names to the info
       const xValue = (d) => d.info;
       const yValue = (d) => d.value;
 
+      // Assign margins and paddings
       this.margin = { top: 10, right: 0, bottom: 30, left: 25 };
       this.padding = { x: 50, y: 20 };
 
+      // Assign width and height
       (this.width = 895 - this.margin.left - this.margin.right),
         (this.height = 500 - this.margin.top - this.margin.bottom);
 
       this.svgElement = d3.select("#d3-chart");
 
+      // Make svg
       const svg = d3
         .select("#d3-chart")
         .attr("width", this.width + this.margin.left + this.margin.right)
@@ -108,7 +105,7 @@ export default {
           "translate(" + this.margin.left + "," + this.margin.top + ")"
         );
 
-      // set the ranges
+      // Set the ranges
       this.x = d3
         .scaleBand()
         .range([0, this.width])
@@ -118,7 +115,7 @@ export default {
           })
         )
         .padding(0.1);
-      // add the x Axis
+      // aDdd the x Axis
       svg
         .append("g")
         .attr("transform", "translate(0," + this.height + ")")
@@ -126,11 +123,11 @@ export default {
 
       this.y = d3.scaleLinear().domain([0, 60]).range([this.height, 0]);
 
-      // add the y Axis
+      // Add the y Axis
       this.yAxisG = svg.append("g").call(d3.axisLeft(this.y));
       this.svgElement = svg;
 
-      // append the rectangles for the bar chart
+      // Append the rectangles for the bar chart
       svg
         .selectAll(".bar")
         .data(data)
@@ -174,14 +171,16 @@ export default {
         })
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
-        .attr("font-weiht", "400")
+        .attr("font-weight", "400")
         .attr("fill", "white");
     },
 
     updateData2014() {
+      // Change year to 2014 and fetch js data
       this.year = "2014";
       let data = this.year2014;
 
+      // Remove old rectangles and add new ones with new data
       d3.selectAll("rect")
         .data(data)
         .transition()
@@ -197,11 +196,13 @@ export default {
           return this.height - this.y(d.value);
         });
 
+      // All the value texts changes
       d3
         .selectAll(".labelText")
         .data(data)
         .transition()
         .duration(1000)
+        // When value is 0, delete the labels
         .text((d) => {
           if (d.value != 0) {
             return d.value;
@@ -218,7 +219,7 @@ export default {
         })
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
-        .attr("font-weiht", "400")
+        .attr("font-weight", "400")
         .attr("fill", "white");
     },
 
@@ -262,7 +263,7 @@ export default {
         })
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
-        .attr("font-weiht", "400")
+        .attr("font-weight", "400")
         .attr("fill", "white");
     },
 
@@ -306,7 +307,7 @@ export default {
         })
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
-        .attr("font-weiht", "400")
+        .attr("font-weight", "400")
         .attr("fill", "white");
     },
 
@@ -350,7 +351,7 @@ export default {
         })
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
-        .attr("font-weiht", "400")
+        .attr("font-weight", "400")
         .attr("fill", "white");
     },
 
@@ -394,11 +395,13 @@ export default {
         })
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
-        .attr("font-weiht", "400")
+        .attr("font-weight", "400")
         .attr("fill", "white");
     },
   },
-  updated() {},
+  updated() {
+    console.log("Je gaat nu iets updaten!")
+  },
   computed() {
     console.log("Computed chart");
     console.log(this);
