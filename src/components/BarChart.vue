@@ -115,7 +115,7 @@ export default {
           })
         )
         .padding(0.1);
-      // aDdd the x Axis
+      // Add the x Axis
       svg
         .append("g")
         .attr("transform", "translate(0," + this.height + ")")
