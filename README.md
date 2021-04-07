@@ -1,68 +1,152 @@
-# frontend-applications
-![RDW Bar Chart](https://imgur.com/DrefNQI.gif)
+# Human Centered Design @cmda-minor-web 2021
+//Interactie ontwerpen: Rapid prototypen en testen met echte mensen
 
-This is the repository for frontend-applications CMD 2020/2021.
-Live version: https://cmd-fa-ser.netlify.app/
+Human Centered Design is een  methode voor het ontwerpen van gebruiksvriendelijke interactieve toepassingen. 
 
-# Resit
-The assignment was not successful at first, so I had to retake it. In this repository you can find the old and new functions from the first and last concept. 
-I had to retake Frontend Data as well, so you can find all the criteria that was needed for both assignments.
+> What distinguishes Human-Centered Design from other problem-solving approaches is its obsessive focus on understanding the perspective of the person who experiences a problem, their needs, and whether the solution that has been designed for them is truly meeting their needs effectively or not. At its most effective, the very people who experience a problem the most are a constant part of the design process and when possible, become part of the design team itself. - [What Is Human-Centered Design?](https://medium.com/dc-design/what-is-human-centered-design-6711c09e2779)
 
-You can find the **old** information about **Frontend Applications** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
-You can find the **new** information about **Frontend Applications** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
+Door regelmatig te testen met je doelgroep kom je tot een beter en passend ontwerp. Een Frontend Designer en Developer heeft verstand van techniek, UX en design. Als je web technieken beheerst kun je je ideeën snel prototypen en testen in een browser. Je kan dan aanpassingen doorvoeren, uitproberen en weer testen ...
 
-You can find the **old** information about **Frontend Data** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
-You can find the **new** information about **Frontend Data** [here](https://github.com/HappyPantss/frontend-applications/wiki)<br>
+In het vak Human Centered Design gaan we dingen ontwerpen voor echte mensen. Is er goede interactie? Kan je 'mens' je product op een prettige manier bedienen? Wat voor principes heb je gebruikt en getest? En is het leuk?
 
-# Debrief
-In this course we will make a data visualization for the 'De Volkskrant' newspaper. We got some data to explore. The data is about parking and cars. I have to choose a topic which I think would make a great visualization. These datasets were given by RDW and are opensource. The RDW is a organization that takes care of the registration of motorized vehicles and driving licenses in the Netherlands.
 
-Datasets with information like parking area's, payment method area's and places where tickets can be bought, can be found. 
+## Opdracht
 
-The first thing we have to do is clean the data, so clean up all the empty spaces for example. After that we have to visualize it using JavaScript and a library (D3) to make something nice.
+### Ontwerpen met en voor echte mensen
 
-# Research questions
-How are Park and Ride parking spaces have been added in the past few years?
+Voor dit vak krijg je een ontwerp-opdracht die je gaat maken voor 1 mens. Een echt mens. Je moet je ontwerp 3 keer testen. Door te testen en te itereren ga je je ontwerp verbeteren. Uiteindelijk heb je een ontwerp dat exclusief gemaakt is voor 1 persoon. Een _exclusive design_ ... Wie is deze persoon dan voor wie je dit gaat maken? Wat vindt deze persoon leuk of juist niet? En hoe bedient deze persoon een computer?
 
-I want to know why Park and Ride spaces are developed, why **you** should use them, and more.
+- [Opdracht - Ontwerpen met en voor echte mensen](course/Opdracht.md)
 
-For more information, click [here](https://github.com/HappyPantss/frontend-applications/wiki).
 
-# Datasets
-The datasets that I use is [GEO PenR](https://opendata.rdw.nl/Parkeren/GEO-PenR/6wzd-evwu). I count all the values and add them together and I use the startdataarea.
+### Leerdoelen
 
-# Installation
-**Clone the repository:**<br>
-`https://github.com/HappyPantss/frontend-applications.git`
+- _Leren hoe je (design) principles in een ontwerp kan toepassen._
+- _User needs begrijpen en gebruiken in je ontwerp._
+- _Leren hoe je moet testen en de resultaten gebruiken voor het verbeteren van je ontwerp._
 
-**Install NPM:**<br>
-`npm install`
+[Rubric](https://docs.google.com/spreadsheets/d/1no32c9YyAP78VMcqfA5i5at2OrxP9ce1d8dVGnii4Vs/)
 
-# Usage
-**Start the local HTTP server on port 8080:**<br>
-`npm run serve`
 
-**Visit the local website in your browser with:**<br>
-`http://localhost:8080/`
 
-# Sources
-## Data
-* RDW. (2020, 13 november). Open Data Parkeren: GEBRUIKSDOEL | Open Data | RDW. https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEBRUIKSDOEL/qidm-7mkf<br>
-* RDW. (2020a, november 13). GEO PenR | Open Data | RDW. https://opendata.rdw.nl/Parkeren/GEO-PenR/6wzd-evwu
+## Planning & programma
 
-## Code
-* RDW. (z.d.). Open Data Parkeren. Geraadpleegd 19 oktober 2020, van [https://opendata.rdw.nl/browse?category=Parkeren&provenance=official](https://opendata.rdw.nl/browse?category=Parkeren&provenance=official)<br>
-* Curran Kelleher. (2018, 23 augustus). Data Visualization 2018 Course Overview. YouTube. https://www.youtube.com/watch?v=4e3NF8ez95w&list=PL9yYRbwpkykvOXrZumtZWbuaXWHvjD8gi&ab_channel=CurranKelleher<br>
-* 4.0 Color Scales - Ordinal. (z.d.). bl.ocks.org. Geraadpleegd op 13 november 2020, van https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9<br>
-* FrontendTips. (2020, 12 augustus). Pie chart using d3 library #d3js. YouTube. https://www.youtube.com/watch?v=lnXf1mpFGb8&t=621s&ab_channel=FrontendTips<br>
-* RGB to hex and hex to RGB. (2011, 11 april). Stack Overflow. [https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb](https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb)
-* Factsheet Park+Ride. (z.d.). Duurzame mobiliteit. Geraadpleegd op 27 januari 2021, van [https://rwsduurzamemobiliteit.nl/kennis-instrumenten/toolbox-slimme-mobiliteit/multimodaal/factsheet-park-ride/](https://rwsduurzamemobiliteit.nl/kennis-instrumenten/toolbox-slimme-mobiliteit/multimodaal/factsheet-park-ride/)
+| Planning  | Woensdag  |  Donderdag | Vrijdag  |
+|---|---|---|---|
+| [Week 1](#week-1)  | Intro, College inclusive design + Testen | Gastcollege + Testen | ~~Feedbackgesprekken~~ |
+| [Week 2](#week-2)  | College over testen + Testen  | Gastcollege + Testen | Feedbackgesprekken  |
+| [Week 3](#week-3)  | College + Testen  |  Gastcollege + Testen | Feedbackgesprekken  |
+| [Week 4](#week-4)  | Presentaties + Beoordelingsgesprekken | Beoordelingsgesprekken | Beoordelingsgesprekken + Weekly Nerd |
 
-# With help from:
-[Jordy Fronik - joordy](https://github.com/joordy)<br>
-[Laurens - razpudding](https://github.com/razpudding)<br>
-[Danny de Vries - dandevri](https://github.com/dandevri)<br>
-[Robert Spier - roberrrt-s](https://github.com/roberrrt-s)<br>
-[Gijs Laarman - gijslaarman](https://github.com/gijslaarman)<br>
-[Lars Ruijs - lars-ruijs](https://github.com/lars-ruijs)<br>
-[Loc Nguyen - LaupWing](https://github.com/LaupWing)
+
+
+### Week 1
+Deze week krijg je een college over _Exclusive Design Principles_. Deze Principles ga je toepassen in de opdracht. Op woensdag gaan we kennis maken met de echte mensen voor wie we gaan ontwerpen. Je kan dan al een kleine interactieve demo maken om te testen.
+
+#### Woensdag 7 april
+Woensdag is de eerste les van het vak Human Centered Design. Je krijgt een intro college over het vak en Vasilis gaat vertellen over _Exclusive Design_.
+
+Daarna prototypen en testen
+
+- 14:00 Groep Darice
+- 15:00 Groep Eric
+
+#### Donderdag 8 april
+Donderdag begint de les met een gastcollege. Deze les gaan we het artikelen [Exclusive Design van Vasilis van Gemert](https://exclusive-design.vasilis.nl/) bespreken.
+
+Daarna prototypen en testen
+
+- 10:30 Groep Roger 
+- 16:30 Groep Marijn
+
+
+#### Vrijdag 9 april
+Deze dag is voor Real-Time web...
+
+
+### Week 2
+Deze week heb je het tweede gesprek met je mens. Wat ga je testen? Wat wil je weten? 
+
+#### Woensdag 14 april
+Woensdag krijg je een college over testen. Voor deze les moet je het artikel [10 Usability Lessons van Steve Krug](https://www.uxbooth.com/articles/10-usability-lessons-from-steve-krugs-dont-make-me-think/) lezen.
+
+Daarna voor de tweede keer prototypen en testen
+
+- 14:00 Groep Darice 
+- 15:00 Groep Eric
+
+#### Donderdag 15 april
+Donderdag begint de les met een gastcollege van Marie van Driessche. 
+
+Daarna voor de tweede keer prototypen en testen
+
+- 10:30 Groep Roger 
+- 14:00 Groep Marijn
+
+#### Vrijdag 16 april
+Vrijdag zijn er coachgesprekken in teams.
+
+
+
+
+### Week 3
+In week 3 gaan we verder met testen, itereren en reflecteren. Deze week is de laatste sessie met je mens. 
+
+#### Woensdag 21 april
+Woensdag beginnen we met een college. Voor deze les moet je dit artikel lezen: [How User Scenarios Help To Improve Your UX van Sabina Idler](https://usabilla.com/blog/how-user-scenarios-help-to-improve-your-ux/).
+
+Daarna gaan we voord de laatste keer prototypen en testen
+
+- 14:00 Groep Darice 
+- 15:00 Groep Eric
+
+#### Donderdag 22 april
+Donderdag begint de les met een gastcollege van Johan Huijkman.
+
+Daarna gaan we voord de laatste keer prototypen en testen
+
+- 10:30 Groep Roger 
+- 14:00 Groep Marijn
+
+
+#### Vrijdag 23 april
+Vrijdag zijn er coachgesprekken.
+
+
+
+
+### Week 4
+
+Deze week hebben we een gesprek waarin we je vorderingen en bevindingen bespreken. We verwachten dat je op Github je tests en iteraties hebt beschreven. Belangrijk is dat je reflecteert op de leerdoelen van het vak. 
+
+
+#### Woensdag 28 april
+Teampresentaties en beoordelingsgesprekken. 
+
+#### Donderdag 29 april
+Beoordelingsgesprekken
+
+#### Vrijdag 30 april
+Beoordelingsgesprekken + Weekly Nerd
+
+
+
+
+
+<!-- Add a link to your live demo in Github Pages 🌐-->
+
+<!-- ☝️ replace this description with a description of your own work -->
+
+<!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
+
+<!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
+
+<!-- Maybe a table of contents here? 📚 -->
+
+<!-- How about a section that describes how to install this project? 🤓 -->
+
+<!-- ...but how does one use this project? What are its features 🤔 -->
+
+<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+
+<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->

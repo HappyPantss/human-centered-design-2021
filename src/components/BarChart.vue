@@ -1,4 +1,5 @@
 <template>
+<a href="">back</a>
   <h2>
     Hoeveel Park & Ride plekken zijn er in <span>{{ year }}</span> gemaakt?
   </h2>
@@ -172,7 +173,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "white");
+        .attr("fill", "black");
     },
 
     updateData2014() {
@@ -220,7 +221,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "white");
+        .attr("fill", "black");
     },
 
     updateData2015() {
@@ -264,7 +265,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "white");
+        .attr("fill", "black");
     },
 
     updateData2018() {
@@ -308,7 +309,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "white");
+        .attr("fill", "black");
     },
 
     updateData2019() {
@@ -352,7 +353,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "white");
+        .attr("fill", "black");
     },
 
     updateData2013() {
@@ -396,7 +397,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "white");
+        .attr("fill", "black");
     },
   },
   updated() {
@@ -413,14 +414,14 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 rect.bar {
-  fill: #3b86e7;
+  fill: black;
 }
 
 .buttonYear {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: black;
 }
 
 input {
@@ -430,40 +431,46 @@ input {
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 1rem;
-  border: 2px solid #3b86e7;
+  font-size: 1.5rem;
+  border: 2px solid black;
   border-radius: 0.6rem;
   outline: none;
 }
 
 input:hover {
-  background-color: #3b86e7;
+  background-color: black;
   color: white;
   border: none;
-  border: 2px solid #3b86e7;
   border-radius: 0.6rem;
 }
 
 input:active {
-  background-color: #9dc2f3;
+  background-color: rgb(63, 63, 63);
+}
+
+input:focus {
+  border: 3px dashed red;
+  background-color: rgb(63, 63, 63);
+  color: white;
 }
 
 span {
-  color: #3b86e7;
+  color: white;
+  -webkit-text-stroke: 3px black;
 }
 
 .tick text {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 0.8rem;
-  color: white;
+  font-size: 0.9rem;
+  color: black;
 }
 
 .tick line {
-  stroke: white;
+  stroke: black;
 }
 
 .domain {
-  stroke: white;
+  stroke: black;
 }
 </style>
