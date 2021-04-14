@@ -26,7 +26,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #cbcbcb;
+  background: #353535;
 }
 
 .spacer {
@@ -48,7 +48,7 @@ body {
 }
 
 .one {
-  background-color: black;
+  background-color: white;
   padding: 2rem;
   border-radius: 2rem;
   width: 50%;
@@ -59,13 +59,13 @@ body {
 h1 {
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
-  color: black;
+  color: white;
 }
 
 h1.title {
   font-family: "Roboto", sans-serif;
   text-align: center;
-  color: black;
+  color: white;
   font-size: 25rem;
   margin-top: -10rem;
   margin-left: -4.5rem;
@@ -83,13 +83,13 @@ a:hover {
 .stage h2 {
   font-family: "Roboto", sans-serif;
   font-size: 4rem;
-  color: black;
+  color: white;
 }
 
 .stage p {
   font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
-  color: black;
+  color: white;
 }
 
 .information {

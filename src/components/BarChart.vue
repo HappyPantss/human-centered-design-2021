@@ -173,7 +173,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "black");
+        .attr("fill", "white");
     },
 
     updateData2014() {
@@ -221,7 +221,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "black");
+        .attr("fill", "white");
     },
 
     updateData2015() {
@@ -265,7 +265,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "black");
+        .attr("fill", "white");
     },
 
     updateData2018() {
@@ -309,7 +309,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "black");
+        .attr("fill", "white");
     },
 
     updateData2019() {
@@ -353,7 +353,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "black");
+        .attr("fill", "white");
     },
 
     updateData2013() {
@@ -397,7 +397,7 @@ export default {
         .attr("font-family", "'Roboto', sans-serif")
         .attr("font-size", "0.8rem")
         .attr("font-weight", "400")
-        .attr("fill", "black");
+        .attr("fill", "white");
     },
   },
   updated() {
@@ -414,14 +414,14 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 rect.bar {
-  fill: black;
+  fill: #b30303;
 }
 
 .buttonYear {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: black;
+  color: white;
 }
 
 input {
@@ -432,13 +432,13 @@ input {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 0.6rem;
   outline: none;
 }
 
 input:hover {
-  background-color: black;
+  background-color: white;
   color: white;
   border: none;
   border-radius: 0.6rem;
@@ -455,22 +455,22 @@ input:focus {
 }
 
 span {
-  color: white;
-  -webkit-text-stroke: 3px black;
+  color: #353535;
+  -webkit-text-stroke: 3px white;
 }
 
 .tick text {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 0.9rem;
-  color: black;
+  color: white;
 }
 
 .tick line {
-  stroke: black;
+  stroke: white;
 }
 
 .domain {
-  stroke: black;
+  stroke: white;
 }
 </style>
