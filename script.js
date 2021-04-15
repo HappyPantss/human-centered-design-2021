@@ -42,6 +42,7 @@ recognition.onresult = function(event) {
     var color = event.results[0][0].transcript;
     diagnostic.textContent = 'Resultaat ontvangen: ' + color + '.';
     bg.style.backgroundColor = color;
+    document.getElementsByTagName("body")[0].style.backgroundColor = color;
     console.log('Vertrouwen: ' + event.results[0][0].confidence);
 }
 
