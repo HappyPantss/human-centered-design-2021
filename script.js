@@ -4,6 +4,8 @@ var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEv
 
 var colors = ['blauw', 'bruin', 'rood', 'paars'];
 var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') + ' ;'
+var voiceWave = document.getElementById('bigpic');
+var voiceBtn = document.getElementById('voiceBtn')
 
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
@@ -27,6 +29,8 @@ hints.innerHTML = 'Zeg een kleur om de achtergrondkleur van de app te wijzigen. 
 
 function handleBtnClick() {
     recognition.start();
+    voiceWave.style.display = 'block'
+    voiceBtn.style.display = 'none'
     console.log('Klaar om een kleuropdracht te ontvangen.');
 }
 
@@ -53,6 +57,8 @@ recognition.onresult = function(event) {
 
 recognition.onspeechend = function() {
     recognition.stop();
+    voiceWave.style.display = 'none';
+    voiceBtn.style.display = 'block'
 }
 
 recognition.onnomatch = function() {
