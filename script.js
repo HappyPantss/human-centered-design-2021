@@ -2,8 +2,7 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
-var colors = ['blue', 'brown', 'red', 'purple'];
-var colorsNL = ['blauw', 'bruin', 'oranje', 'paars'];
+var colors = ['blauw', 'bruin', 'rood', 'paars'];
 var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') + ' ;'
 
 var recognition = new SpeechRecognition();
@@ -20,6 +19,10 @@ var bg = document.querySelector('body');
 var hints = document.querySelector('.hints');
 
 var colorHTML = '';
+colors.forEach(function(v, i, a) {
+    console.log(v, i);
+    colorHTML += '<span> ' + v + ' </span>';
+});
 hints.innerHTML = 'Zeg een kleur om de achtergrondkleur van de app te wijzigen. Probeer ' + colorHTML + '.';
 
 function handleBtnClick() {
