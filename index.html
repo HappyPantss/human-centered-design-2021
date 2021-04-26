@@ -12,15 +12,27 @@
 </head>
 
 <body>
-    <a href=" https://lisaoude.github.io/human-centered-design-2021/">Terug</a>
-    <h1>Spraak kleurwisselaar</h1>
+    <h1 id="title">Hallo Roger.</h1>
+    <p id="question">Waar wil je vandaag gaan hardlopen?</p>
 
     <button type="button" onclick="handleBtnClick()" id="voiceBtn">
-       Spreek iets in
+       Spreek je plaats in.
     </button>
+    <div id='repeatDiv'>
+        <p>of</p>
+        <button type="button" onclick="repeatBtnClick()" id="repeatBtn">
+           Luister nog een keer.
+        </button>
+    </div>
     <img id="bigpic" src="pulse.svg" />
     <p class="hints"></p>
     <p class="output"><em>...diagnostische berichten</em></p>
+    <audio src="Hallo Roosjee..mp3" id="my_audio"></audio>
+    <audio src="Waar wil je vandaag gaan hardlopen_.mp3" id="my_audio2"></audio>
+    <audio src="Spreek je plaats in..mp3" id="my_audio3"></audio>
+    <audio src="Het is 6 over 4 's middags..mp3" id="my_audio4"></audio>
+    <audio src="De temperatuur in Amsterdam is 15 graden..mp3" id="my_audio5"></audio>
+    <audio src="Het is prima weer om buiten te gaan hardlopen..mp3" id="my_audio6"></audio>
     <script src="script.js"></script>
 </body>
 
