@@ -14,8 +14,8 @@ body {
     background-color: #353535;
     color: #e6e6e6;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
 }
 
