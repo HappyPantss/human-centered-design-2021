@@ -13,68 +13,16 @@
 
 <body>
     <h1 id="title">Hallo Roger.</h1>
-    <p id="question">Waar wil je vandaag gaan hardlopen?</p>
+    <p id="question">Spreek je plaats in waar je vandaag wilt hardlopen.</p>
 
     <button type="button" onclick="handleBtnClick()" id="voiceBtn">
        Spreek je plaats in.
     </button>
-    <div id='repeatDiv'>
-        <p>of</p>
-        <button type="button" onclick="repeatBtnClick()" id="repeatBtn">
-           Luister nog een keer.
-        </button>
-    </div>
     <div id="app"></div>
     <img id="bigpic" src="pulse.svg" />
     <p class="hints"></p>
     <p class="output"><em>...diagnostische berichten</em></p>
-    <audio src="Hallo Roosjee..mp3" id="my_audio"></audio>
-    <audio src="Waar wil je vandaag gaan hardlopen_.mp3" id="my_audio2"></audio>
-    <audio src="Spreek je plaats in..mp3" id="my_audio3"></audio>
-    <audio src="Het is 6 over 4 's middags..mp3" id="my_audio4"></audio>
-    <audio src="De temperatuur in Amsterdam is 15 graden..mp3" id="my_audio5"></audio>
-    <audio src="Het is prima weer om buiten te gaan hardlopen..mp3" id="my_audio6"></audio>
     <script src="script.js"></script>
-    <!-- <SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
-        function initArray() {
-            this.length = initArray.arguments.length;
-            for (var i = 0; i < this.length; i++)
-                this[i + 1] = initArray.arguments[i];
-        }
-
-        var dagArray = new initArray("zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag");
-
-        var maandArray = new initArray("januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december");
-
-        var nu = new Date();
-        var dagtekst = dagArray[(nu.getDay() + 1)];
-        var dag = nu.getDate();
-        var maandtekst = maandArray[(nu.getMonth() + 1)];
-        var jaar = nu.getYear();
-        var jaar4 = ((jaar < 1900) ? (jaar + 1900) : (jaar));
-
-        var datumweergave = dagtekst + " " + dag + " " + maandtekst + " " + jaar4;
-
-        var uren = nu.getHours();
-        var uren2 = ((uren < 10) ? "0" : "") + uren;
-        var minuten = nu.getMinutes();
-        var minuten2 = ((minuten < 10) ? ":0" : ":") + minuten;
-
-        var tijdweergave = uren2 + minuten2
-
-        if (nu.getHours() >= 18)
-            var welkom = ("Goedenavond, ");
-        else if (nu.getHours() >= 12)
-            var welkom = ("Goedemiddag, ");
-        else if (nu.getHours() >= 6)
-            var welkom = ("Goedemorgen, ");
-        else
-            var welkom = ("Goedenacht, ");
-
-        var bericht = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur.";
-
-        document.write(bericht);
-    </SCRIPT> -->
 </body>
 
 </html>

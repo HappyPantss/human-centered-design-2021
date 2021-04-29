@@ -8,6 +8,8 @@ html {
 }
 
 body {
+    padding-left: 1rem;
+    /* padding-top: 2rem; */
     height: inherit;
     max-width: 800px;
     margin: 0 auto;
@@ -25,7 +27,6 @@ a {
     font-family: sans-serif;
     color: #e6e6e6;
     max-width: 35rem;
-    text-align: center;
 }
 
 a {
@@ -38,7 +39,10 @@ h1 {
 
 img {
     display: none;
-    width: 50px;
+    width: 120px;
+    margin-left: -1.3rem;
+    margin-top: -1rem;
+    margin-bottom: -4rem;
 }
 
 button {
@@ -59,4 +63,8 @@ button {
 
 #repeatDiv {
     display: none;
+}
+
+#voiceBtn {
+    margin-top: 1rem;
 }

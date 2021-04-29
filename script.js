@@ -27,34 +27,20 @@ function handleBtnClick() {
     recognition.start()
 
     var msg = new SpeechSynthesisUtterance();
-    msg.text = "Spreek je plaats in.";
+    msg.text = "Spreek je plaats in waar je vandaag wilt hardlopen.";
     msg.lang = 'nl';
     speechSynthesis.speak(msg);
 
     voiceWave.style.display = 'block'
     voiceBtn.style.display = 'none'
-    console.log('Klaar om een kleuropdracht te ontvangen.');
-}
-
-function repeatBtnClick() {
-    document.getElementById('my_audio4').play()
-    setTimeout(function() {
-        document.getElementById('my_audio5').play()
-    }, 2500)
-    setTimeout(function() {
-        document.getElementById('my_audio6').play()
-    }, 5500)
 }
 
 recognition.onresult = function(event) {
     var color = event.results[0][0].transcript;
     diagnostic.textContent = 'Resultaat ontvangen: ' + color + '.'
-    console.log('Vertrouwen: ' + event.results[0][0].confidence)
+        // console.log('Vertrouwen: ' + event.results[0][0].confidence)
 
     const API_KEY = '6360ba36cb9146e6cdcac987c838d764'
-        // const locatie = 'Sal'
-        // const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&appid=${API_KEY}`
-        // http://api.openweathermap.org/data/2.5/weather?q=Amsterdam&units=metric&appid=6360ba36cb9146e6cdcac987c838d764
 
     function getData() {
         return new Promise((resolve, reject) => {
@@ -67,28 +53,47 @@ recognition.onresult = function(event) {
                 })
                 .then(data => {
                     let html = data.main.temp
-                    console.log(html)
                     resolve(html)
 
                     var temperatuur = Math.floor(html);
 
-                    let typeWeer
-                    if (temperatuur < 10 || temperatuur > 25) {
-                        typeWeer == 'slecht'
+                    if (temperatuur <= 9 || temperatuur >= 26) {
+
+                        var msg = new SpeechSynthesisUtterance();
+                        msg.text = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is slecht weer om buiten te gaan hardlopen.";
+                        msg.lang = 'nl';
+                        speechSynthesis.speak(msg);
+
+                        hints.innerHTML = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is slecht weer om buiten te gaan hardlopen.";
+
                     } else if (temperatuur >= 10 && temperatuur <= 15) {
-                        typeWeer == 'perfect'
+
+                        var msg = new SpeechSynthesisUtterance();
+                        msg.text = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is redelijk weer om buiten te gaan hardlopen.";
+                        msg.lang = 'nl';
+                        speechSynthesis.speak(msg);
+
+                        hints.innerHTML = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is redelijk weer om buiten te gaan hardlopen.";
+
                     } else if (temperatuur >= 15 && temperatuur <= 20) {
-                        typeWeer == 'prima'
+
+                        var msg = new SpeechSynthesisUtterance();
+                        msg.text = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is goed weer om buiten te gaan hardlopen.";
+                        msg.lang = 'nl';
+                        speechSynthesis.speak(msg);
+
+                        hints.innerHTML = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is goed weer om buiten te gaan hardlopen.";
+
                     } else if (temperatuur >= 20 && temperatuur <= 25) {
-                        typeWeer == 'perfect'
+
+                        var msg = new SpeechSynthesisUtterance();
+                        msg.text = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is perfect weer om buiten te gaan hardlopen.";
+                        msg.lang = 'nl';
+                        speechSynthesis.speak(msg);
+
+                        hints.innerHTML = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is perfect weer om buiten te gaan hardlopen.";
+
                     }
-
-                    var msg = new SpeechSynthesisUtterance();
-                    msg.text = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is " + typeWeer + " weer om buiten te gaan hardlopen.";
-                    msg.lang = 'nl';
-                    speechSynthesis.speak(msg);
-
-                    hints.innerHTML = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur. De temperatuur in " + color + " is " + temperatuur + " graden. Het is " + typeWeer + " weer om buiten te gaan hardlopen.";
                 })
                 .catch(error => {
                     console.log(error)
@@ -135,8 +140,6 @@ else if (nu.getHours() >= 6)
 else
     var welkom = ("Goedenacht, ");
 
-// var bericht = welkom + "het is " + datumweergave + " en " + tijdweergave + " uur.";
-
 recognition.onspeechend = function() {
     recognition.stop();
     voiceWave.style.display = 'none'
@@ -151,7 +154,7 @@ recognition.onspeechend = function() {
 }
 
 recognition.onnomatch = function() {
-    diagnostic.textContent = "Ik herkende die kleur niet."
+    diagnostic.textContent = "Ik herkende die plaats niet."
     voiceWave.style.display = 'none'
     voiceBtn.style.display = 'block'
 }
